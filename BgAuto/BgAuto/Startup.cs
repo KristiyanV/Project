@@ -1,5 +1,8 @@
+using BgAuto.Abstraction;
 using BgAuto.Data;
 using BgAuto.Domain;
+using BgAuto.Infrastruction;
+using BgAuto.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,7 +42,11 @@ namespace BgAuto
                   .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
-            services.AddRazorPages(); ;
+            services.AddRazorPages();
+            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<ITestDriveService, TestDriveService>();
+            services.AddTransient<ICarService, CarService>();
             services.Configure<IdentityOptions>(option =>
             {
                 option.Password.RequireDigit = false;
@@ -55,6 +62,7 @@ namespace BgAuto
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase().Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

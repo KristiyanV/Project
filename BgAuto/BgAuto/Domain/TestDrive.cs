@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BgAuto.Domain
+{
+    public class TestDrive
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
+        public string CustomerId { get; set; }
+        public ApplicationUser Customer { get; set; }
+        public string CarId { get; set; }
+        public Car Car { get; set; }
+        public DateTime OrderedOn { get; set; }
+        public DateTime TestOn { get; set; }
+
+    }
+}
