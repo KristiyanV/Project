@@ -8,6 +8,7 @@ namespace BgAuto.Models
     public class CarDetailsViewModel
     {
         public string Id { get; set; }
+        public string Image { get; set; }
         public string CarNumber { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }

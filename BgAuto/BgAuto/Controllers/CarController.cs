@@ -1,4 +1,5 @@
 ﻿using BgAuto.Abstraction;
+using BgAuto.Domain;
 using BgAuto.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace BgAuto.Controllers
                 .Select(x => new CarAllViewModel
                 {
                  Id = x.Id,
+                 Image = x.Image,
                  CarNumber = x.CarNumber,
                  Color = x.Color,
                  Country = x.Country,
@@ -46,6 +48,7 @@ namespace BgAuto.Controllers
             CarDetailsViewModel detailsViewModel = new CarDetailsViewModel
             {
                 Id = x.Id,
+                Image = x.Image,
                 CarNumber = x.CarNumber,
                 Color = x.Color,
                 Country = x.Country,
@@ -70,7 +73,7 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isCreated = service.Create(car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras);
+                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras);
 
                 if (isCreated)
                 {
@@ -80,9 +83,30 @@ namespace BgAuto.Controllers
             return View();
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
-            return View();
+            {
+                Car item = service.GetCar(id);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                CarCreateViewModel car = new CarCreateViewModel()
+                {
+                    Id = item.Id,
+                    Image = item.Image,
+                    CarNumber = item.CarNumber,
+                    Color = item.Color,
+                    Country = item.Country,
+                    Brand = item.Brand,
+                    Engine = item.Engine,
+                    Extras = item.Extras,
+                    Model = item.Model,
+                    Year = item.Year
+
+                };
+                return View(car);
+            }
         }
 
         [HttpPost]

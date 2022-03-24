@@ -4,14 +4,15 @@
     ViewData["Title"] = "All";
 }
 
-<h1>All</h1>
+<h1>Cars</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CarNumber)
             </th>
@@ -42,6 +43,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CarNumber)
             </td>

@@ -17,10 +17,11 @@ namespace BgAuto.Services
             this.context = _context;
         }
 
-        public bool Create(string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
+        public bool Create(string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
         {
             var car = new Car
             {
+                Image = Image,
                 CarNumber = CarNumber,
                 Brand = Brand,
                 Model = Model,
@@ -62,7 +63,7 @@ namespace BgAuto.Services
 
             return context.SaveChanges() != 0;
         }
-        public bool UpdateC(string Id, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
+        public bool UpdateCar(string Id, string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
         {
             var car = context.Cars.Find(Id);
 
@@ -70,6 +71,7 @@ namespace BgAuto.Services
             {
                 return false;
             }
+            car.Image = Image;
             car.CarNumber = CarNumber;
             car.Brand = Brand;
             car.Model = Model;
