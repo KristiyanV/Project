@@ -111,32 +111,54 @@ namespace BgAuto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(string id, CarCreateViewModel createCar)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras);
+                if (updated)
+                {
+                    return this.RedirectToAction("All");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            return View();
+            var item = service.GetCar(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+            var editModel = new CarCreateViewModel
+
+            {
+                Id = item.Id,
+                Image = item.Image,
+                CarNumber = item.CarNumber,
+                Color = item.Color,
+                Country = item.Country,
+                Brand = item.Brand,
+                Engine = item.Engine,
+                Extras = item.Extras,
+                Model = item.Model,
+                Year = item.Year
+            };
+            return View(editModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(string id, IFormCollection collection)
         {
-            try
+            var deleted = service.RemoveCar(id);
+            if (deleted)
             {
-                return RedirectToAction(nameof(Index));
+                return this.RedirectToAction("All");
             }
-            catch
+            else
             {
                 return View();
             }
