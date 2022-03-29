@@ -1351,3 +1351,8 @@ C:\Users\PC123\Desktop\Project\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\View
 C:\Users\PC123\Desktop\Project\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Contact\Contacts.cshtml.g.cs
 C:\Users\PC123\Desktop\Project\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\ForUs\ForUsPage.cshtml.g.cs
 C:\Users\PC123\Desktop\Project\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Account\Accounts.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Account\Accounts.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Delete.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Edit.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Contact\Contacts.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\ForUs\ForUsPage.cshtml.g.cs

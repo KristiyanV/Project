@@ -5,48 +5,78 @@
 }
 
 <h1>Details</h1>
+<h4>About the car</h4>
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card text-black">                  
+                    <img src="@Model.Image"
+                         class="card-img-top"
+                         alt="Apple Computer" />
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="card-title">Believing is seeing</h5>
+                            <p class="text-muted mb-4">Car details</p>
+                        </div>
 
-@*<div class="container py-4 my-4 mx-auto d-flex flex-column">
-    <div class="header">
-        <div class="row r1">
-            <div class="col-md-9 abc">
-                <h1>Tyre Mountain Cycle 21</h1>
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.CarNumber)</span><span>@Html.DisplayFor(model => model.CarNumber)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Brand)</span><span>@Html.DisplayFor(model => model.Brand)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Model)</span><span>@Html.DisplayFor(model => model.Model)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Year)</span><span>@Html.DisplayFor(model => model.Year)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Engine)</span><span>@Html.DisplayFor(model => model.Engine)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Color)</span><span>@Html.DisplayFor(model => model.Color)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Country)</span><span>@Html.DisplayFor(model => model.Country)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Extras)</span><span>@Html.DisplayFor(model => model.Extras)</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>@Html.DisplayNameFor(model => model.Price)</span><span>@Html.DisplayFor(model => model.Price)</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                            <span>Test Drive</span><span>
+                                @await Html.PartialAsync("_TestDrivePartialView", new TestDriveCreateBindingModel
+                            {
+                            CarId = Model.Id,
+                            })
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p class="text-right para">Based on 250 Review</p>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="All">Back to List</a>
         </div>
     </div>
-    <div class="container-body mt-4">
-        <div class="row r3">
-            <div class="col-md-5 p-0 klo">
-                <ul>
-                    <li>100% Quality</li>
-                    <li>Free Shipping</li>
-                    <li>Easy Returns</li>
-                    <li>12 Months Warranty</li>
-                    <li>EMI Starting from (On Credit Cards)</li>
-                    <li>Normal Delivery : 4-5 Days</li>
-                    <li>Express Delivery : 2-3 Days</li>
-                    <li>COD Available (All Over India)</li>
-                </ul>
-            </div>
-            <div class="col-md-7"> <img src="https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDTORADO-MUSCUTORA65799297FD22C/1564571511644_0.jpg" width="90%" height="95%"> </div>
-        </div>
-    </div>
-    <div class="footer d-flex flex-column mt-5">
-        <div class="row r4">
-            <div class="col-md-2 myt des"><a href="#">Description</a></div>
-            <div class="col-md-2 myt "><a href="#">Review</a></div>
-            <div class="col-md-2 mio offset-md-4"><a href="#">ADD TO CART</a></div>
-            <div class="col-md-2 myt "><button type="button" class="btn btn-outline-warning"><a href="#">BUY NOW</a></button></div>
-        </div>
-    </div>
-</div>*@
-
-<div>
+</section>
+@*<div>
     <h4>About the car</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CarNumber)
         </dt>
@@ -96,6 +126,12 @@
             @Html.DisplayFor(model => model.Extras)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
             Test Drive
         </dt>
         <dd class="col-sm-10">
@@ -109,4 +145,4 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="All">Back to List</a>
-</div>
+</div>*@

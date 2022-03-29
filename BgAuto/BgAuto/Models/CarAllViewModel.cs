@@ -21,5 +21,6 @@ namespace BgAuto.Models
         public string Country { get; set; }
         public string Extras { get; set; }
         public string DetailsAction { get; set; }
+        public decimal Price { get; set; }
     }
 }

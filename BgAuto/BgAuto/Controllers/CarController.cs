@@ -33,7 +33,8 @@ namespace BgAuto.Controllers
                  Engine = x.Engine,
                  Extras = x.Extras,
                  Model = x.Model,
-                 Year = x.Year
+                 Year = x.Year,
+                 Price = x.Price
 
                 }).ToList();
 
@@ -56,7 +57,8 @@ namespace BgAuto.Controllers
                 Engine = x.Engine,
                 Extras = x.Extras,
                 Model = x.Model,
-                Year = x.Year
+                Year = x.Year,
+                Price = x.Price
             };
 
             return View("Details", detailsViewModel);
@@ -73,7 +75,7 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras);
+                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras, car.Price);
 
                 if (isCreated)
                 {
@@ -102,7 +104,8 @@ namespace BgAuto.Controllers
                     Engine = item.Engine,
                     Extras = item.Extras,
                     Model = item.Model,
-                    Year = item.Year
+                    Year = item.Year,
+                    Price = item.Price
 
                 };
                 return View(car);
@@ -115,7 +118,7 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras);
+                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras, createCar.Price);
                 if (updated)
                 {
                     return this.RedirectToAction("All");
@@ -132,7 +135,7 @@ namespace BgAuto.Controllers
             {
                 return NotFound();
             }
-            var editModel = new CarCreateViewModel
+            var deleteModel = new CarCreateViewModel
 
             {
                 Id = item.Id,
@@ -146,7 +149,7 @@ namespace BgAuto.Controllers
                 Model = item.Model,
                 Year = item.Year
             };
-            return View(editModel);
+            return View(deleteModel);
         }
 
         [HttpPost]

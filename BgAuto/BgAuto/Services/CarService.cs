@@ -17,7 +17,7 @@ namespace BgAuto.Services
             this.context = _context;
         }
 
-        public bool Create(string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
+        public bool Create(string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price)
         {
             var car = new Car
             {
@@ -29,7 +29,8 @@ namespace BgAuto.Services
                 Engine = Engine,
                 Color = Color,
                 Country = Country,
-                Extras = Extras
+                Extras = Extras,
+                Price = Price
             };
             context.
                 Cars.Add(car);
@@ -63,7 +64,7 @@ namespace BgAuto.Services
 
             return context.SaveChanges() != 0;
         }
-        public bool UpdateCar(string Id, string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras)
+        public bool UpdateCar(string Id, string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price)
         {
             var car = context.Cars.Find(Id);
 
@@ -80,6 +81,7 @@ namespace BgAuto.Services
             car.Color = Color;
             car.Country = Country;
             car.Extras = Extras;
+            car.Price = Price;
 
             context.Cars.Update(car);
             return context.SaveChanges() != 0;

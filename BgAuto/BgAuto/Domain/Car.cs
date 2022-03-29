@@ -19,5 +19,6 @@ namespace BgAuto.Domain
         public string Color { get; set; }
         public string Country { get; set; }
         public string Extras { get; set; }
+        public decimal Price { get; set; }
     }
 }
