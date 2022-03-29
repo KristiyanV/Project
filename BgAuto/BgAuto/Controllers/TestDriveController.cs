@@ -54,6 +54,16 @@ namespace BgAuto.Controllers
 
             return View("All", testdrive);
         }
+        public IActionResult Create(string carId)
+        {
+            TestDriveCreateBindingModel testDrive = new TestDriveCreateBindingModel()
+            {
+                CarId = carId,
+                CustomerId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                OrderedOn = DateTime.Now
+            };
+            return View(testDrive);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(TestDriveCreateBindingModel viewModel)
