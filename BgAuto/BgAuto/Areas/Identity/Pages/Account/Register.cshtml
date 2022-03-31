@@ -9,48 +9,47 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-xl-9 mx-auto">
-                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-                    <div class="card-img-left d-none d-md-flex">
-                    </div>
-                    <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
-                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" asp-for="Input.Username" placeholder="Username" required autofocus>
-                                </div>
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden" style="background-image: linear-gradient(to left,#0d6efd, #198754) "/>
+                <div class="card-img-left d-none d-md-flex">
+                </div>
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5" style="color:white">Register</h5>
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" asp-for="Input.Username" placeholder="Username" required autofocus>
+                        </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="First Name">
-                                </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="First Name">
+                        </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" asp-for="Input.LastName" placeholder="Last Name">
-                                </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" asp-for="Input.LastName" placeholder="Last Name">
+                        </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" asp-for="Input.Email" placeholder="name@example.com">
-                                </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" asp-for="Input.Email" placeholder="name@example.com">
+                        </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" asp-for="Input.Password" placeholder="Password">
-                                </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" asp-for="Input.Password" placeholder="Password">
+                        </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" asp-for="Input.ConfirmPassword" placeholder="Confirm Password">
-                                </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" asp-for="Input.ConfirmPassword" placeholder="Confirm Password">
+                        </div>
 
-                                <div class="d-grid mb-2">
-                                    <button type="submit" class="btn btn-primary">Register</button>
-                                </div>
+                        <div class="d-grid mb-2">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
 
-                                <a class="d-block text-center mt-2 small" href="#">Have an account? Sign In</a>
+                        <a class="d-block text-center mt-2 small" style="color:white" href="#">Have an account? Sign In</a>
 
-                            </form>
-                    </div>
+                    </form>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
 </body>
 
 
