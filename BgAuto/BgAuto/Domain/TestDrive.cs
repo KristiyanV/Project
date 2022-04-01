@@ -10,6 +10,7 @@ namespace BgAuto.Domain
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
+        public string Image { get; set; }
         public string CustomerId { get; set; }
         public ApplicationUser Customer { get; set; }
         public string CarId { get; set; }

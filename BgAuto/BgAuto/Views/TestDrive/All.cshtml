@@ -19,6 +19,26 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>
+                        <figure class="media">
+                            <div class="img-wrap">@Html.DisplayFor(modelItem => item.Image)</div>
+                            <figcaption class="media-body">
+                                <h6 class="title text-truncate">@Html.DisplayFor(modelItem => item.Model) @Html.DisplayFor(modelItem => item.Brand)</h6>
+                                <dl class="param param-inline small">
+                                    <dt>Order: @Html.DisplayFor(modelItem => item.Customer)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Order data: @Html.DisplayFor(modelItem => item.OrderedOn)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Order Test drive data: @Html.DisplayFor(modelItem => item.TestOn)</dt>
+                                </dl>
+
+                            </figcaption>
+                        </figure>
+                    </td>
+                </tr>
         </table>
     </div>
 }

@@ -3,8 +3,6 @@
 @{
     ViewData["Title"] = "All";
 }
-<body>
-    <div style="background-image: url(background.jpeg); height: 1000px">
         <h1>Cars Collection</h1>
         @foreach (var item in Model)
         {
@@ -32,46 +30,47 @@
                                     <h4 class="mr-1">$@Html.DisplayFor(modelItem => item.Price)/day</h4>
                                 </div>
                                 <h6 class="text-success">Free shipping</h6>
-
-                                <div class="modal-footer justify-content-center">
-                                    <form asp-action="Edit">
-                                        <input type="hidden" asp-for="@item.Id" />
-                                        <input type="submit" value="Edit" class="btn btn-success" />
-                                    </form>
-                                    <form asp-action="Details" asp-route-id="@item.Id">
-                                        <input type="submit" value="Details" class="btn btn-info" />
-                                    </form>
-                                    <a href="#myModal" class="trigger-btn" data-toggle="modal"><input type="submit" value="Delete" class="btn btn-danger" /> </a>
-                                </div>
-                                <div id="myModal" class="modal fade">
-                                    <div class="modal-dialog modal-confirm">
-                                        <div class="modal-content">
-                                            <div class="modal-header flex-column">
-                                                <div class="icon-box">
+                                @if (User.IsInRole("Administrator"))
+                                {
+                                    <div class="modal-footer justify-content-center">
+                                        <form asp-action="Edit">
+                                            <input type="hidden" asp-for="@item.Id" />
+                                            <input type="submit" value="Edit" class="btn btn-success" />
+                                        </form>
+                                        
+                                        <form asp-action="Details" asp-route-id="@item.Id">
+                                            <input type="submit" value="Details" class="btn btn-info" />
+                                        </form>
+                                        <a href="#myModal" class="trigger-btn" data-toggle="modal"><input type="submit" value="Delete" class="btn btn-danger" /> </a>
+                                    </div>
+                                }
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+                                                    <div class="icon-box">
+                                                    </div>
+                                                    <h4 class="modal-title w-100">Are you sure?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                 </div>
-                                                <h4 class="modal-title w-100">Are you sure?</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                            </div>
-                                            <div class="modal-footer justify-content-center">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <form asp-action="Delete" asp-route-id="@item.Id">
-                                                    <input type="submit" value="Delete" class="btn btn-danger" />
-                                                </form>
+                                                <div class="modal-body">
+                                                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <form asp-action="Delete" asp-route-id="@item.Id">
+                                                        <input type="submit" value="Delete" class="btn btn-danger" />
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         }
-    </div>
-</body>
     @*<table class="table">
             <thead>
                 <tr>
