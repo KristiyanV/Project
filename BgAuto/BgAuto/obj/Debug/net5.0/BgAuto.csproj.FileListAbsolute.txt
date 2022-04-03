@@ -1810,3 +1810,4 @@ C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\ref\BgAuto.dll
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\BgAuto.pdb
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\BgAuto.genruntimeconfig.cache
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\MakeDiscount.cshtml.g.cs

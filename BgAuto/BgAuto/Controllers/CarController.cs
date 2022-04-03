@@ -24,18 +24,18 @@ namespace BgAuto.Controllers
             List<CarAllViewModel> car = service.GetCars()
                 .Select(x => new CarAllViewModel
                 {
-                 Id = x.Id,
-                 Image = x.Image,
-                 CarNumber = x.CarNumber,
-                 Color = x.Color,
-                 Country = x.Country,
-                 Brand = x.Brand,
-                 Engine = x.Engine,
-                 Extras = x.Extras,
-                 Model = x.Model,
-                 Year = x.Year,
-                 Price = x.Price
-
+                    Id = x.Id,
+                    Image = x.Image,
+                    CarNumber = x.CarNumber,
+                    Color = x.Color,
+                    Country = x.Country,
+                    Brand = x.Brand,
+                    Engine = x.Engine,
+                    Extras = x.Extras,
+                    Model = x.Model,
+                    Year = x.Year,
+                    Price = x.Price,
+                    Discount = x.Discount
                 }).ToList();
 
 
@@ -58,7 +58,8 @@ namespace BgAuto.Controllers
                 Extras = x.Extras,
                 Model = x.Model,
                 Year = x.Year,
-                Price = x.Price
+                Price = x.Price,
+                Discount = x.Discount
             };
 
             return View("Details", detailsViewModel);
@@ -75,7 +76,7 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras, car.Price);
+                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras, car.Price, car.Discount);
 
                 if (isCreated)
                 {
@@ -105,7 +106,8 @@ namespace BgAuto.Controllers
                     Extras = item.Extras,
                     Model = item.Model,
                     Year = item.Year,
-                    Price = item.Price
+                    Price = item.Price,
+                    Discount = item.Discount
 
                 };
                 return View(car);
@@ -118,7 +120,7 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras, createCar.Price);
+                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras, createCar.Price, createCar.Discount);
                 if (updated)
                 {
                     return this.RedirectToAction("All");
@@ -165,6 +167,62 @@ namespace BgAuto.Controllers
             {
                 return View();
             }
+        }
+        public IActionResult MakeDiscount(string id)
+        {
+            var x = service.GetCar(id);
+
+            CarPromotionViewModel product = new CarPromotionViewModel
+            {
+                Id = x.Id,
+                Model = x.Model,
+                Brand = x.Brand,
+                OldPrice = x.Price,
+                NewPrice = x.Price,
+                Image = x.Image
+            };
+            return View(product);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult MakeDiscount(string id, int discount)
+        {
+            service.MakeDiscount(id, discount);
+
+            return this.RedirectToAction("All");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveDiscount(string id, int discount)
+        {
+            service.RemoveDiscount(id);
+
+            return this.RedirectToAction("All");
+        }
+        public IActionResult AllDiscounts()
+        {
+            var products = new List<CarAllViewModel>();
+
+            foreach (var product in service.GetCars().Where(x => x.Discount != 0))
+            {
+                var viewModel = new CarAllViewModel
+                {
+                    Id = product.Id,
+                    Image = product.Image,
+                    CarNumber = product.CarNumber,
+                    Color = product.Color,
+                    Country = product.Country,
+                    Brand = product.Brand,
+                    Engine = product.Engine,
+                    Extras = product.Extras,
+                    Model = product.Model,
+                    Year = product.Year,
+                    Price = product.Price,
+                    Discount = product.Discount
+                };
+                products.Add(viewModel);
+            }
+            return View("All", products);
         }
     }
 }

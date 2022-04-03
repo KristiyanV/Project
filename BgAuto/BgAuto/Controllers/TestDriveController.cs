@@ -24,6 +24,8 @@ namespace BgAuto.Controllers
                 .Select(x => new TestDriveListingViewModel
                 {
                     Id = x.Id,
+                    Image = x.Car.Image,
+                    Price = x.Car.Price,
                     CustomerId = x.CustomerId,
                     Customer = x.Customer.UserName,
                     Model = x.Car.Model,
@@ -43,6 +45,8 @@ namespace BgAuto.Controllers
                 .Select(x => new TestDriveListingViewModel
                 {
                     Id = x.Id,
+                    Image = x.Car.Image,
+                    Price = x.Car.Price,
                     CustomerId = x.CustomerId,
                     Customer = x.Customer.UserName,
                     Model = x.Car.Model,

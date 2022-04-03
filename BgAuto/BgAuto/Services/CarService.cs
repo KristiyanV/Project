@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BgAuto.Services
 {
-    public class CarService:ICarService
+    public class CarService : ICarService
     {
         private readonly ApplicationDbContext context;
 
@@ -17,7 +17,7 @@ namespace BgAuto.Services
             this.context = _context;
         }
 
-        public bool Create(string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price)
+        public bool Create(string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price, decimal Discount)
         {
             var car = new Car
             {
@@ -30,7 +30,8 @@ namespace BgAuto.Services
                 Color = Color,
                 Country = Country,
                 Extras = Extras,
-                Price = Price
+                Price = Price,
+                Discount = Discount
             };
             context.
                 Cars.Add(car);
@@ -64,7 +65,7 @@ namespace BgAuto.Services
 
             return context.SaveChanges() != 0;
         }
-        public bool UpdateCar(string Id, string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price)
+        public bool UpdateCar(string Id, string Image, string CarNumber, string Brand, string Model, int Year, string Engine, string Color, string Country, string Extras, decimal Price, decimal Discount)
         {
             var car = context.Cars.Find(Id);
 
@@ -84,6 +85,39 @@ namespace BgAuto.Services
             car.Price = Price;
 
             context.Cars.Update(car);
+            return context.SaveChanges() != 0;
+        }
+        public bool MakeDiscount(string id, int discount)
+        {
+            var product = GetCar(id);
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            product.Discount = product.Price * discount / 100;
+            product.Price -= product.Discount;
+
+            context.Cars.Update(product);
+
+            return context.SaveChanges() != 0;
+        }
+
+        public bool RemoveDiscount(string id)
+        {
+            var product = GetCar(id);
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            product.Price += product.Discount;
+            product.Discount = 0;
+
+            context.Cars.Update(product);
+
             return context.SaveChanges() != 0;
         }
     }
