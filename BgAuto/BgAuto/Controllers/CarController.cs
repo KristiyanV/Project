@@ -224,5 +224,27 @@ namespace BgAuto.Controllers
             }
             return View("All", products);
         }
+        public IActionResult Promotion()
+        {
+            List<CarAllViewModel> car = service.GetCars()
+                .Select(x => new CarAllViewModel
+                {
+                    Id = x.Id,
+                    Image = x.Image,
+                    CarNumber = x.CarNumber,
+                    Color = x.Color,
+                    Country = x.Country,
+                    Brand = x.Brand,
+                    Engine = x.Engine,
+                    Extras = x.Extras,
+                    Model = x.Model,
+                    Year = x.Year,
+                    Price = x.Price,
+                    Discount = x.Discount
+                }).ToList();
+
+
+            return View("Promotion", car);
+        }
     }
 }

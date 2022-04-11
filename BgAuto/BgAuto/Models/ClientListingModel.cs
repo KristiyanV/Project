@@ -10,6 +10,8 @@ namespace BgAuto.Models
     public class ClientListingModel:ApplicationUser
     {
         [Required]
+        public string UserName { get; set; }
+        [Required]
         [StringLength(100, MinimumLength = 3)]
         public string FirstName { get; set; }
         [Required]

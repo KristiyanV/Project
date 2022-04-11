@@ -24,5 +24,6 @@ namespace BgAuto.Data
         public DbSet<BgAuto.Models.CarAllViewModel> CarAllViewModel { get; set; }
         public DbSet<BgAuto.Models.CarDetailsViewModel> CarDetailsViewModel { get; set; }
         public DbSet<BgAuto.Models.CarCreateViewModel> CarCreateViewModel { get; set; }
+        public DbSet<BgAuto.Models.ClientCreateViewModel> ClientCreateViewModel { get; set; }
     }
 }

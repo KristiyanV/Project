@@ -1,0 +1,110 @@
+﻿@model IEnumerable<BgAuto.Models.CarAllViewModel>
+
+@{
+    ViewData["Title"] = "Promotion";
+}
+
+<h1>Promotion</h1>
+
+@foreach (var item in Model)
+{
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-start row" style="width:1700px">
+            <div class="col-md-10">
+                <div class="row p-2 bg-white border rounded">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="@item.Image"></div>
+                    <div class="col-md-6 mt-3">
+                        <h5>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Brand)
+                                @Html.DisplayFor(modelItem => item.Model)
+                            </th>
+                        </h5>
+                        <div class="d-flex flex-row">
+                            <div class="mt-1 mb-1 spec-1"><span>Engine - @Html.DisplayFor(modelItem => item.Engine)</span></div>
+                        </div>
+                        <div class="mt-1 mb-1 spec-1"><span>Year - @Html.DisplayFor(modelItem => item.Year)</span></div>
+                        <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
+                        <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                            <div style="height: 24px">
+                                @if (item.Discount > 0)
+                                {
+                                    var oldPrice = $"{item.Discount + item.Price:f2}";
+                                    <p class="mb-0 text-left"><s>@oldPrice lv.</s></p>
+                                }
+                            </div>
+                            <div id="item-price-container">
+                                @if (item.Discount > 0)
+                                {
+                                    <span class="font-weight-bold text-danger" style="font-size: 17px">@item.Price lv.</span>
+                                }
+                                else
+                                {
+                                    <span class="font-weight-bold" style="font-size: 17px"> @item.Price lv.</span>
+                                }
+                            </div>
+                        </div>
+                        <h6 class="text-success">Free shipping</h6>
+                        <div class="mt-3">
+                            <form asp-action="Details" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-info">Details <i class="bi bi-info-circle"></i></button>
+                            </form>
+                        </div>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <div class="modal-footer justify-content-start mt-3">
+                                <form asp-action="Edit" asp-controller="Car">
+                                    <input type="hidden" asp-for="@item.Id" />
+                                    <button type="submit" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+                                </form>
+                                @*<form asp-action="Edit">
+                    <input type="hidden" asp-for="@item.Id" />
+                    <input type="submit" value="Edit" class="btn btn-success" />
+                </form>*@
+
+                                <a href="#myModal" class="trigger-btn" data-toggle="modal"><button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button> </a>
+                                <td class="align-middle">
+                                    @if (item.Discount == 0)
+                                    {
+                                        <a asp-action="MakeDiscount" asp-route-id="@item.Id" class="btn btn-success" style="height:auto">Add Discount</a>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="RemoveDiscount" asp-controller="Car" method="post">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-danger" style="height:auto">Remove Discount</button>
+                                        </form>
+                                    }
+                                </td>
+                            </div>
+                        }
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog modal-confirm">
+                                <div class="modal-content">
+                                    <div class="modal-header flex-column">
+                                        <div class="icon-box">
+                                        </div>
+                                        <h4 class="modal-title w-100">Are you sure?</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <form asp-action="Delete" asp-route-id="@item.Id">
+                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
