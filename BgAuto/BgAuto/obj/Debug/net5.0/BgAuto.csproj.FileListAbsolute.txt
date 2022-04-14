@@ -1813,3 +1813,6 @@ C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\MakeDiscount.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Promotion.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\All.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\MakeDiscount.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Promotion.cshtml.g.cs
+C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\All.cshtml.g.cs
