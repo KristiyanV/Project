@@ -19,7 +19,7 @@ namespace BgAuto.Controllers
             this.service = _service;
         }
 
-        public IActionResult All()
+        public IActionResult All(string searchBrand, string searchModel, decimal searchPrice)
         {
             List<CarAllViewModel> car = service.GetCars()
                 .Select(x => new CarAllViewModel
@@ -35,10 +35,25 @@ namespace BgAuto.Controllers
                     Model = x.Model,
                     Year = x.Year,
                     Price = x.Price,
-                    Discount = x.Discount
+                    Discount = x.Discount,
+                    Quantity = x.Quantity
                 }).ToList();
 
-
+            if (!String.IsNullOrEmpty(searchBrand))
+            {
+                car = car.Where(x => x.Brand.ToLower() == searchBrand.ToLower())
+                .ToList();
+            }
+            else if (!String.IsNullOrEmpty(searchModel))
+            {
+                car = car.Where(x => x.Model.ToLower() == searchModel.ToLower())
+            .ToList();
+            }
+            else if (!Decimal.Zero.Equals(searchPrice))
+            {
+                car = car.Where(x => x.Price == searchPrice)
+                .ToList();
+            }
             return View("All", car);
         }
 
@@ -59,7 +74,8 @@ namespace BgAuto.Controllers
                 Model = x.Model,
                 Year = x.Year,
                 Price = x.Price,
-                Discount = x.Discount
+                Discount = x.Discount,
+                Quantity = x.Quantity
             };
 
             return View("Details", detailsViewModel);
@@ -76,7 +92,8 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year, car.Engine, car.Color, car.Country, car.Extras, car.Price, car.Discount);
+                var isCreated = service.Create(car.Image, car.CarNumber, car.Brand, car.Model, car.Year,
+                    car.Engine, car.Color, car.Country, car.Extras, car.Price, car.Discount, car.Quantity);
 
                 if (isCreated)
                 {
@@ -107,7 +124,8 @@ namespace BgAuto.Controllers
                     Model = item.Model,
                     Year = item.Year,
                     Price = item.Price,
-                    Discount = item.Discount
+                    Discount = item.Discount,
+                    Quantity = item.Quantity
 
                 };
                 return View(car);
@@ -120,7 +138,9 @@ namespace BgAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras, createCar.Price, createCar.Discount);
+                var updated = service.UpdateCar(createCar.Id, createCar.Image, createCar.CarNumber, createCar.Brand, createCar.Model, 
+                    createCar.Year, createCar.Engine, createCar.Color, createCar.Country, createCar.Extras, 
+                    createCar.Price, createCar.Discount, createCar.Quantity);
                 if (updated)
                 {
                     return this.RedirectToAction("All");
@@ -149,7 +169,8 @@ namespace BgAuto.Controllers
                 Engine = item.Engine,
                 Extras = item.Extras,
                 Model = item.Model,
-                Year = item.Year
+                Year = item.Year,
+                Quantity = item.Quantity
             };
             return View(deleteModel);
         }
@@ -226,7 +247,7 @@ namespace BgAuto.Controllers
         }
         public IActionResult Promotion()
         {
-            List<CarAllViewModel> car = service.GetCars()
+            List<CarAllViewModel> car = service.GetCars().Where(x => x.Discount != 0)
                 .Select(x => new CarAllViewModel
                 {
                     Id = x.Id,
@@ -240,7 +261,9 @@ namespace BgAuto.Controllers
                     Model = x.Model,
                     Year = x.Year,
                     Price = x.Price,
-                    Discount = x.Discount
+                    Discount = x.Discount,
+                    Quantity = x.Quantity
+              
                 }).ToList();
 
 

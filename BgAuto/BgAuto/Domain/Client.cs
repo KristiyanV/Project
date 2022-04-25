@@ -13,14 +13,6 @@ namespace BgAuto.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         [Required]
-        public string UserName { get; set; }
-        [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-        [Required]
         [MaxLength(10)]
         public string Phone { get; set; }
         [Required]

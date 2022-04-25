@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BgAuto.Models.OrderListingViewModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>All Orders</h1>
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3">
+        <table class="table table-hover shopping-cart-wrap">
+            <thead class="text-muted">
+                <tr>
+                    <th scope="col">Car: @Html.DisplayNameFor(model => model.Model) @Html.DisplayNameFor(model => model.Brand)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="1">
+                        <figure class="media">
+                            <div class="img-wrap"> <img src="@Html.DisplayFor(modelItem => item.Image)" height="200" /></div>
+                            <figcaption class="media-body ml-3 mt-3">
+                                <h6 class="title text-truncate">@Html.DisplayFor(modelItem => item.Model) @Html.DisplayFor(modelItem => item.Brand)</h6>
+                                <dl class="param param-inline small">
+                                    <dt>Order: @Html.DisplayFor(modelItem => item.Customer)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Order data: @Html.DisplayFor(modelItem => item.OrderedOn)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Price: @Html.DisplayFor(modelItem => item.Price)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Count: @Html.DisplayFor(modelItem => item.Quantity)</dt>
+                                </dl>
+                            </figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+

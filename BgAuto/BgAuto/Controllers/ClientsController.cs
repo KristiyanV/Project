@@ -37,9 +37,9 @@ namespace BgAuto.Controllers
                 .Select(x => new ClientListingModel
                 {
                     Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
                     Phone = x.Phone,
+                    FirstName = x.User.FirstName,
+                    LastName = x.User.LastName,
                     Address = x.Address,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
@@ -56,82 +56,27 @@ namespace BgAuto.Controllers
         {
             return View();
         }
-
-        // GET: ClientsController/Create
-        public IActionResult Register()
+        public IActionResult Create()
         {
             return View();
         }
-
-        // POST: ClientsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(ClientCreateViewModel client)
+        public IActionResult Create(ClientCreateViewModel clientCreateViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(client);
-            }
-            if (await userManager.FindByNameAsync(client.Username) == null)
-            {
-                ApplicationUser user = new ApplicationUser();
-                user.UserName = client.Username;
-                user.Email = client.Email;
-
-                var result = await userManager.CreateAsync(user, client.Password);
-
-                if (result.Succeeded)
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userIdAlreadyClient = this.service
+                .GetClients()
+                .Any(d => d.UserId == userId);
+                var iscreated = service.CreateClient(clientCreateViewModel.PhoneNumber, clientCreateViewModel.Address, userId);
+                if(iscreated)
                 {
-                    var created = service.CreateClient(client.FirstName, client.LastName, client.PhoneNumber, client.Address, user.Id);
-
-                    if (created)
-                    {
-                        userManager.AddToRoleAsync(user, "Client").Wait();
-
-                        await signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("AllProcessors", "Components");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            ModelState.AddModelError(string.Empty, "The user exists.");
-            return View();
+            return View(clientCreateViewModel);
         }
-
-        public IActionResult Profile()
-        {
-            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var clientEdit = new ClientCreateViewModel();
-
-            if (User.IsInRole("Employee"))
-            {
-                return RedirectToAction("Profile", "Employees");
-            }
-            else if (User.IsInRole("Administrator"))
-            {
-                var admin = userManager.Users
-                    .FirstOrDefault(x => x.Id == userId);
-
-                clientEdit.Id = admin.Id;
-                clientEdit.FirstName = "Admin";
-                clientEdit.LastName = "Admin";
-                clientEdit.Username = admin.UserName;
-                clientEdit.Email = admin.Email;
-                clientEdit.PhoneNumber = "*********";
-            }
-            else
-            {
-                var client = service.GetClient(userId);
-
-                clientEdit.Id = client.Id;
-                clientEdit.FirstName = client.FirstName;
-                clientEdit.LastName = client.LastName;
-                clientEdit.Username = client.User.UserName;
-                clientEdit.Email = client.User.Email;
-                clientEdit.PhoneNumber = client.Phone;
-                clientEdit.Address = client.Address;
-            }
-
-            return View(clientEdit);
-        }       
     }
 }

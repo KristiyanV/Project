@@ -1784,10 +1784,8 @@ C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Account\Accounts.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\All.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Create.cshtml.g.cs
-C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Delete.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Details.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Edit.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\_TestDrivePartialView.cshtml.g.cs
@@ -1812,7 +1810,15 @@ C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\BgAuto.genruntimeconfig.cache
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\MakeDiscount.cshtml.g.cs
 C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Promotion.cshtml.g.cs
-C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\All.cshtml.g.cs
 C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\MakeDiscount.cshtml.g.cs
 C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\Promotion.cshtml.g.cs
 C:\Users\Student\Documents\Krisi12b\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\All.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Car\_OrderPartialView.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\TestDrive\My.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Order\All.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Order\Create.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Employees\Create.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Order\My.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Employees\All.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\All.cshtml.g.cs
+C:\Users\PC123\Desktop\Нова папка (12)\Project\BgAuto\BgAuto\obj\Debug\net5.0\Razor\Views\Clients\Create.cshtml.g.cs

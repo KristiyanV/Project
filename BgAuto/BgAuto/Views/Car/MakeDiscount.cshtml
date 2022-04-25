@@ -30,7 +30,6 @@
             <form asp-action="MakeDiscount" asp-controller="Car" method="post">
                 <input type="hidden" name="id" value="@Model.Id" />
                 <div>
-                    @*<label>Enter percentages: </label>*@
                     <input class="form-control m-auto text-center" asp-for="Discount" id="productDiscount" min=0 style="width: 160px" onchange="CalculateDiscount()" placeholder="Enter percentages" value="" />
                     <span asp-validation-for="Discount" class="text-danger"></span>
                 </div>

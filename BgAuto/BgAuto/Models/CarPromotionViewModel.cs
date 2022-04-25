@@ -14,5 +14,6 @@ namespace BgAuto.Models
         public decimal NewPrice { get; set; }
         public decimal Discount { get; set; }
         public string Image { get; set; }
+        public int Quantity { get; set; }
     }
 }

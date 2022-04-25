@@ -21,6 +21,7 @@ namespace BgAuto.Domain
         public string Extras { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+        public int Quantity { get; set; }
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }

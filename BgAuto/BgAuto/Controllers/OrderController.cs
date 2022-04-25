@@ -3,6 +3,7 @@ using BgAuto.Data;
 using BgAuto.Domain;
 using BgAuto.Models;
 using BgAuto.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -29,14 +30,15 @@ namespace BgAuto.Controllers
                 {
                     Id = x.Id,
                     Image = x.Car.Image,
-                    Price = x.Car.Price,
+                    CustomerId = x.CustomerId,
+                    Customer = x.Customer.UserName,
+                    Price = x.Car.Price * x.Quantity,
                     Model = x.Car.Model,
                     Brand = x.Car.Brand,
                     OrderedOn = x.OrderedOn.ToString("dd-MMM,yyyy hh:mm", CultureInfo.InvariantCulture),
-                    Count = x.Count
+                    Quantity = x.Quantity
 
                 }).ToList();
-
             return View(order);
         }
         public IActionResult My()
@@ -48,15 +50,16 @@ namespace BgAuto.Controllers
                 {
                     Id = x.Id,
                     Image = x.Car.Image,
-                    Price = x.Car.Price,
+                    CustomerId = x.CustomerId,
+                    Customer = x.Customer.UserName,
+                    Price = x.Car.Price * x.Quantity,
                     Model = x.Car.Model,
                     Brand = x.Car.Brand,
                     OrderedOn = x.OrderedOn.ToString("dd-MMM,yyyy hh:mm", CultureInfo.InvariantCulture),
-                    Count = x.Count
+                    Quantity = x.Quantity
 
                 }).ToList();
-
-            return View("All", order);
+            return View(order);
         }
         public IActionResult Create(string carId)
         {
@@ -67,6 +70,7 @@ namespace BgAuto.Controllers
             };
             return View(order);
         }
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(OrderCreateViewModel viewModel)
@@ -75,7 +79,7 @@ namespace BgAuto.Controllers
             {
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                var created = service.Create(viewModel.Id, viewModel.CarId, viewModel.Car, viewModel.OrderedOn, viewModel.Count);
+                var created = service.Create(viewModel.Id, viewModel.CustomerId, userId, viewModel.Customer, viewModel.CarId, viewModel.Car, viewModel.OrderedOn, viewModel.Quantity);
 
                 if (created)
                 {

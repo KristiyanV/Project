@@ -20,11 +20,8 @@ namespace BgAuto.Data
         public DbSet<TestDrive> TestDrives { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<BgAuto.Models.TestDriveListingViewModel> TestDriveListingViewModel { get; set; }
-        public DbSet<BgAuto.Models.TestDriveCreateBindingModel> TestDriveCreateBindingModel { get; set; }
-        public DbSet<BgAuto.Models.CarAllViewModel> CarAllViewModel { get; set; }
-        public DbSet<BgAuto.Models.CarDetailsViewModel> CarDetailsViewModel { get; set; }
-        public DbSet<BgAuto.Models.CarCreateViewModel> CarCreateViewModel { get; set; }
+        public DbSet<BgAuto.Models.EmployeeListingViewModel> EmployeeListingViewModel { get; set; }
         public DbSet<BgAuto.Models.ClientCreateViewModel> ClientCreateViewModel { get; set; }
+        public DbSet<BgAuto.Models.ClientListingModel> ClientListingModel { get; set; }
     }
 }

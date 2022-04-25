@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace BgAuto.Models
 {
-    public class EmployeeListingModel:ApplicationUser
+    public class EmployeeListingViewModel
     {
+        
+        public string Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 3)]
         public string FirstName { get; set; }
@@ -21,6 +23,9 @@ namespace BgAuto.Models
         [Required]
         public string JobTitle { get; set; }
         public string UserId { get; set; }
+        [Display(Name = "Admin")]
         public bool IsAdmin { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
     }
 }

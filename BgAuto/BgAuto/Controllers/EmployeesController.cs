@@ -19,7 +19,8 @@ namespace BgAuto.Controllers
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly ILogger<LogoutModel> logger;
 
-        public EmployeesController(IEmployeeService service, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
+        public EmployeesController(IEmployeeService service, UserManager<ApplicationUser> userManager, 
+            SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
         {
             this.service = service;
             this.userManager = userManager;
@@ -30,7 +31,7 @@ namespace BgAuto.Controllers
         public async Task<IActionResult> All()
         {
             var employees = service.GetEmployees()
-                .Select(x => new EmployeeListingModel
+                .Select(x => new EmployeeListingViewModel
                 {
                     Id = x.Id,
                     FirstName = x.FirstName,
@@ -118,7 +119,7 @@ namespace BgAuto.Controllers
                     {
                         userManager.AddToRoleAsync(user, "Employee").Wait();
 
-                        return RedirectToAction("AllProcessors", "Components");
+                        return RedirectToAction("All");
                     }
                 }
             }

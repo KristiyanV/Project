@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BgAuto.Models
 {
-    public class ClientListingModel:ApplicationUser
+    public class ClientListingModel
     {
+        public string Id { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
@@ -23,5 +24,6 @@ namespace BgAuto.Models
         [Required]
         public string Address { get; set; }
         public string UserId { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -3,9 +3,17 @@
 @{
     ViewData["Title"] = "All";
 }
-        <h1>Cars Collection</h1>
-        @foreach (var item in Model)
-        {
+<h1>Cars Collection</h1>
+<form asp-controller="Car" asp-action="All" method="get">
+    <div class="mt-3">
+        Brand: <input type="text" name="searchBrand" />
+        Model: <input type="text" name="searchModel" />
+        Price: <input type="text" name="searchPrice" />
+        <button type="submit" class="btn btn-info">Filter <i class="bi bi-filter-left"></i></button>
+    </div>
+</form>
+@foreach (var item in Model)
+{
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-start row" style="width:1350px">
             <div class="col-md-10">
@@ -22,8 +30,11 @@
                             <div class="mt-1 mb-1 spec-1"><span>Engine - @Html.DisplayFor(modelItem => item.Engine)</span></div>
                         </div>
                         <div class="mt-1 mb-1 spec-1"><span>Year - @Html.DisplayFor(modelItem => item.Year)</span></div>
-                        <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        <div class="mt-1 mb-1 spec-1"><span>The car is in perfect technical condition. Excellent appearance and interior. Flawless operation of engine, speeds and running gear. Everything about the car works perfectly. With valid insurance, review and tax.</span></div>
+                        <p class="mb-3"> @Html.DisplayFor(modelItem => item.Description) </p>
+                        <ul class="list-inline list-inline-dotted mb-0">
+                            <li class="list-inline-item">Quantity: <a>@Html.DisplayFor(modelItem => item.Quantity) cars available</a></li>
+                        </ul>
                     </div>
                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                         <div class="d-flex flex-row align-items-center">
@@ -41,7 +52,7 @@
                                 }
                                 else
                                 {
-                                    <span class="font-weight-bold" style="font-size: 17px"> @item.Price lv.</span>
+                                    <span class="font-weight-bold" style="font-size: 17px">$ @item.Price</span>
                                 }
                             </div>
                         </div>
@@ -51,11 +62,17 @@
                                 <button type="submit" class="btn btn-info">Details <i class="bi bi-info-circle"></i></button>
                             </form>
                         </div>
+                        <div class="mt-3">
+                            @await Html.PartialAsync("_OrderPartialView", new OrderCreateViewModel
+                            {
+                                CarId = item.Id
+
+                            })
+                        </div>
                         @if (User.IsInRole("Administrator"))
                         {
                             <div class="modal-footer justify-content-start mt-3">
-                                <form asp-action="Edit" asp-route-id="@item.Id">
-                                    @*<input type="hidden" asp-for="@item.Id" />*@
+                                <form asp-action="Edit" asp-controller="Car" asp-route-id="@item.Id" method="get">
                                     <button type="submit" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
                                 </form>
 

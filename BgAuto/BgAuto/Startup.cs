@@ -47,6 +47,7 @@ namespace BgAuto
             services.AddTransient<IClientService, ClientService>();
             services.AddTransient<ITestDriveService, TestDriveService>();
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.Configure<IdentityOptions>(option =>
             {
                 option.Password.RequireDigit = false;

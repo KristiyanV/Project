@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BgAuto.Models.TestDriveListingViewModel>
+
+@{
+    ViewData["Title"] = "My";
+}
+
+<h1>My test drive made</h1>
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3">
+        <table class="table table-hover shopping-cart-wrap">
+            <thead class="text-muted">
+                <tr>
+                    <th scope="col">Car: @Html.DisplayNameFor(model => model.Model) @Html.DisplayNameFor(model => model.Brand)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="1">
+                        <figure class="media">
+                            <div class="img-wrap"> <img src="@Html.DisplayFor(modelItem => item.Image)" height="200" /></div>
+                            <figcaption class="media-body ml-3 mt-3">
+                                <h6 class="title text-truncate">@Html.DisplayFor(modelItem => item.Model) @Html.DisplayFor(modelItem => item.Brand)</h6>
+                                <dl class="param param-inline small">
+                                    <dt>Order: @Html.DisplayFor(modelItem => item.Customer)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Order data: @Html.DisplayFor(modelItem => item.OrderedOn)</dt>
+                                </dl>
+                                <dl class="param param-inline small">
+                                    <dt>Test drive data: @Html.DisplayFor(modelItem => item.TestOn)</dt>
+                                </dl>
+                            </figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+
+
+                @*<table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CustomerId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Customer)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Model)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Brand)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderedOn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TestOn)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Customer)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Model)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Brand)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderedOn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TestOn)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>*@

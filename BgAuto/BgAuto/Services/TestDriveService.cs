@@ -25,6 +25,7 @@ namespace BgAuto.Services
 
             foreach (var testdrive in testdrives)
             {
+                testdrive.Car = context.Cars.Find(testdrive.CarId);
                 testdrive.Customer = context.Users.Find(testdrive.CustomerId);
             }
 

@@ -1,5 +1,6 @@
 ﻿using BgAuto.Abstraction;
 using BgAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,7 +36,6 @@ namespace BgAuto.Controllers
                     TestOn = x.TestOn.ToString("dd-MMM,yyyy hh:mm", CultureInfo.InvariantCulture)
 
                 }).ToList();
-
             return View(testdrive);
         }
         public IActionResult My()
@@ -56,8 +56,7 @@ namespace BgAuto.Controllers
                     TestOn = x.TestOn.ToString("dd-MMM,yyyy hh:mm", CultureInfo.InvariantCulture)
 
                 }).ToList();
-
-            return View("All", testdrive);
+            return View(testdrive);
         }
         public IActionResult Create(string carId)
         {
@@ -69,6 +68,7 @@ namespace BgAuto.Controllers
             };
             return View(testDrive);
         }
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(TestDriveCreateBindingModel viewModel)
@@ -77,7 +77,8 @@ namespace BgAuto.Controllers
             {
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                var created = service.Create(viewModel.Id, viewModel.CustomerId, userId, viewModel.Customer, viewModel.CarId, viewModel.Car, viewModel.OrderedOn, viewModel.TestOn);
+                var created = service.Create(viewModel.Id, viewModel.CustomerId, userId, viewModel.Customer, 
+                    viewModel.CarId, viewModel.Car, viewModel.OrderedOn, viewModel.TestOn);
 
                 if (created)
                 {

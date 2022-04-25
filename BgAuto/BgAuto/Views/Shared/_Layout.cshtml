@@ -10,7 +10,7 @@
     <script src ="https://kit.fontawesome.com/2ca93d86e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div style="background-image: url(car.jpg);">
+    <div>
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
@@ -24,14 +24,17 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
-                            @if (User.IsInRole("Administrator"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Create">Create</a>
-                                </li>
-                            }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="All">Car</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Promotion">Promo Offers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TestDrive" asp-action="My">My Test Drive</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="My">My Orders</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Contacts">Contact Us</a>
@@ -39,15 +42,22 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="ForUs" asp-action="ForUsPage">For Us</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TestDrive" asp-action="My">Test Drive</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Promotion">Promo Offers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="All">Clients</a>
-                            </li>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <li class="nav-item active">
+                                    <div class="dropdown show">
+                                        <a class="nav-link active dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Action</a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Create">Create New Car</a>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="All">Clients</a>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="All">Employees</a>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="TestDrive" asp-action="All">All Test Drive</a>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="All">All Orders</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
                         </ul>
                         <partial name="_LoginPartial" />
                     </div>

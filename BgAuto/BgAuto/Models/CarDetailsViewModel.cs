@@ -19,5 +19,6 @@ namespace BgAuto.Models
         public string Extras { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -3,96 +3,84 @@
 @{
     ViewData["Title"] = "Register";
 }
-
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-9 mx-auto">
-                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden" style="background-image: linear-gradient(to left,#ff0000, #000000)"/>
-                <div class="card-img-left d-none d-md-flex">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-9 mx-auto">
+                    <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                        <div class="card-body p-4 p-sm-5">
+                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <div class="form-group">
+                                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                            <input type="text" class="form-control" asp-for="Input.Username" placeholder="Enter your Username" required autofocus>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="cols-sm-2 control-label">Your FirstName</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                            <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="Enter your FirstName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="cols-sm-2 control-label">Your LastName</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                            <input type="text" class="form-control" asp-for="Input.LastName" placeholder="Enter your LastName">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                            <input type="email" class="form-control" asp-for="Input.Email" placeholder="Enter your Email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                            <input type="password" class="form-control" asp-for="Input.Password" placeholder="Enter your Password">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                                    <div class="cols-sm-10">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                            <input type="password" class="form-control" asp-for="Input.ConfirmPassword" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid mb-2">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                                <a class="d-block text-center mt-2 small" style="color:black" href="https://localhost:44304/Identity/Account/Login">Have an account? Sign In</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body p-4 p-sm-5">
-                    <h5 class="card-title text-center mb-5 fw-light fs-5" style="color:white">Register</h5>
-                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" asp-for="Input.Username" placeholder="Username" required autofocus>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="First Name">
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" asp-for="Input.LastName" placeholder="Last Name">
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" asp-for="Input.Email" placeholder="name@example.com">
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" asp-for="Input.Password" placeholder="Password">
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" asp-for="Input.ConfirmPassword" placeholder="Confirm Password">
-                        </div>
-
-                        <div class="d-grid mb-2">
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </div>
-
-                        <a class="d-block text-center mt-2 small" style="color:white" href="https://localhost:44304/Identity/Account/Login">Have an account? Sign In</a>
-
-                    </form>
-                </div>
-            </div>
             </div>
         </div>
 </body>
 
 
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Username"></label>
-                <i class="fa fa-user-circle" aria-hidden="true"></i><input asp-for="Input.Username" class="form-control" />
-                <span asp-validation-for="Input.Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.FirstName"></label>
-                <i class="fa fa-user" aria-hidden="true"></i><input asp-for="Input.FirstName" class="form-control" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.LastName"></label>
-                <i class="fa fa-user" aria-hidden="true"></i><input asp-for="Input.LastName" class="form-control" />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <i class="fa fa-envelope" aria-hidden="true"></i><input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <i class="fa fa-lock" aria-hidden="true"></i><input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <i class="fa fa-key" aria-hidden="true"></i><input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-</div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
